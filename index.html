@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Openmatic — El TMS que cumple con el SAT por ti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+
+<!-- ═══ LOADER ═══ -->
+<div id="loader">
+  <img src="assets/logoopenmatic.png" alt="Openmatic" id="loader-logo">
+  <div id="loader-track"><div id="loader-bar"></div></div>
+  <div id="loader-pct">0%</div>
+  <div id="loader-label">Cargando recursos</div>
+</div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar">
+  <img src="assets/logoopenmatic.png" alt="Openmatic" class="nav-logo">
+  <div class="nav-links">
+    <a href="#features">Producto</a>
+    <a href="#carta">Carta Porte</a>
+    <a href="#telemetry">Mantenimiento</a>
+    <a href="docs/tutorial/introduccion">Documentación</a>
+  </div>
+  <button onclick="window.open('https://calendar.app.google/AQz2pAq7ZeP5NnZB7')" class="btn-nav">Agendar demo</button>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero-scroll-container">
+  <div id="hero-sticky">
+    <canvas id="hero-canvas"></canvas>
+    <video id="hero-video-bg" src="assets/camion.mp4" muted playsinline preload="auto"></video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        TMS para transportistas mexicanos
+      </div>
+      <h1>El TMS que cumple<br>con el <em>SAT</em> por ti</h1>
+      <p>Genera tu Carta Porte timbrada, controla tu flota, programa mantenimientos con telemetría y factura sin errores — todo desde una sola plataforma diseñada para el transportista mexicano.</p>
+      <div class="hero-ctas">
+        <button class="btn-hero btn-hero-primary" onclick="window.location.href='#cta'">Solicitar demo gratis</button>
+        <button class="btn-hero btn-hero-sec" onclick="window.location.href='docs/tutorial/introduccion'">Ver documentación</button>
+      </div>
+    </div>
+
+    <div class="hero-status">
+      <div class="hero-status-label">Flota activa ahora</div>
+      <div class="status-row"><div class="dot dot-green"></div><span>T-421 — En ruta CDMX→GDL</span></div>
+      <div class="status-row"><div class="dot dot-green"></div><span>T-309 — Carta Porte timbrada</span></div>
+      <div class="status-row"><div class="dot dot-yellow"></div><span>T-118 — Servicio en 500 km</span></div>
+      <div class="status-row"><div class="dot dot-blue"></div><span>T-205 — Descargando en destino</span></div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      Scroll
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num" data-count="90" data-suffix="%">0</div>
+      <div class="stat-desc">menos tiempo generando Cartas Porte</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" data-count="0" data-suffix="">0</div>
+      <div class="stat-desc">multas SAT con timbrado correcto desde el primer viaje</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" data-count="30" data-suffix="%">0</div>
+      <div class="stat-desc">reducción en costos de mantenimiento correctivo</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" data-count="25" data-suffix="%">0</div>
+      <div class="stat-desc">menos kilómetros muertos con optimización de rutas</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FEATURES ═══ -->
+<div class="section" id="features">
+  <div class="section-eyebrow" data-reveal>Plataforma completa</div>
+  <div class="section-title" data-reveal>Todo lo que necesita tu flotilla</div>
+  <div class="section-sub" data-reveal style="margin-bottom:0">Una sola plataforma que conecta el despacho, el cumplimiento fiscal, la operación y el mantenimiento de tus unidades.</div>
+
+  <div class="features-grid">
+    <!-- Carta Porte -->
+    <div class="feature-card highlight">
+      <div class="feature-icon accent">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#6C8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 12h6m-3-3v6M5 8l-2 4h18l-2-4H5z"/><rect x="3" y="16" width="18" height="4" rx="1"/>
+        </svg>
+      </div>
+      <div class="feature-pill">SAT · Carta Porte 3.1</div>
+      <div class="feature-title">Carta Porte con timbrado automático</div>
+      <div class="feature-desc">Genera y timbra tu CFDI con Complemento de Carta Porte en segundos desde el despacho. Sin errores de catálogos SAT, sin rechazos del PAC. Cumple con la obligación fiscal sin fricciones.</div>
+      <div class="tag-group">
+        <span class="tag-accent">Timbrado inmediato</span>
+        <span class="tag-accent">Catálogos SAT</span>
+        <span class="tag-accent">Cancelaciones</span>
+      </div>
+    </div>
+
+    <!-- Despacho -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="rgba(210,220,255,0.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M3 12h3m12 0h3M12 3v3m0 12v3"/>
+          <path d="M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
+        </svg>
+      </div>
+      <div class="feature-title">Despacho y optimización de rutas</div>
+      <div class="feature-desc">Asigna cargas, optimiza recorridos y da seguimiento en tiempo real a cada unidad. Tus clientes reciben actualizaciones automáticas de su embarque.</div>
+      <div class="tag-group">
+        <span class="tag">GPS en tiempo real</span>
+        <span class="tag">Asignación de operadores</span>
+        <span class="tag">ETA automático</span>
+      </div>
+    </div>
+
+    <!-- Mantenimiento -->
+    <div class="feature-card highlight">
+      <div class="feature-icon accent">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#6C8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20V10m0 0l-3 3m3-3 3 3"/><circle cx="12" cy="6" r="2"/>
+          <path d="M6 20h12M4 12a8 8 0 0 1 16 0"/>
+        </svg>
+      </div>
+      <div class="feature-pill">Diferenciador clave</div>
+      <div class="feature-title">Mantenimiento conectado a telemetría</div>
+      <div class="feature-desc">El sistema lee los datos de la unidad en tiempo real — kilómetros, horas motor, temperatura — y genera alertas de mantenimiento preventivo antes de que ocurra la falla. Inventario de refacciones integrado.</div>
+      <div class="tag-group">
+        <span class="tag-accent">Alertas por km</span>
+        <span class="tag-accent">Horas motor</span>
+        <span class="tag-accent">Inventario refacciones</span>
+        <span class="tag-accent">Historial por unidad</span>
+      </div>
+    </div>
+
+    <!-- Facturación -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="rgba(210,220,255,0.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M8 3v4m8-4v4"/>
+        </svg>
+      </div>
+      <div class="feature-title">Catálogos y facturación integrada</div>
+      <div class="feature-desc">Administra clientes, proveedores, operadores y vehículos desde un solo lugar. Genera facturas vinculadas a cada viaje y controla tu cartera con cuentas por cobrar automatizadas.</div>
+      <div class="tag-group">
+        <span class="tag">Clientes y proveedores</span>
+        <span class="tag">CxC automático</span>
+        <span class="tag">Facturación por viaje</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TELEMETRÍA ═══ -->
+<section id="telemetry">
+  <div class="telem-inner">
+    <div class="section-eyebrow" data-reveal>Mantenimiento inteligente</div>
+    <div class="section-title" data-reveal>Tu flotilla le avisa cuándo<br>necesita servicio</div>
+    <div class="section-sub" data-reveal>Los sensores de la unidad hablan con Openmatic. El sistema calcula cuándo vence el próximo servicio, genera la orden de trabajo y reserva la refacción — antes de que el camión quede varado en carretera.</div>
+
+    <div class="telem-grid">
+      <div id="telem-steps">
+        <div class="telem-item">
+          <div class="telem-num">01</div>
+          <div class="telem-text"><strong>Telemetría en tiempo real.</strong> Lecturas de kilometraje, horas motor, temperatura y niveles de fluidos directamente desde el vehículo.</div>
+        </div>
+        <div class="telem-item">
+          <div class="telem-num">02</div>
+          <div class="telem-text"><strong>Alertas preventivas automáticas.</strong> El sistema calcula la ventana óptima para el servicio y te notifica con días de anticipación.</div>
+        </div>
+        <div class="telem-item">
+          <div class="telem-num">03</div>
+          <div class="telem-text"><strong>Inventario de refacciones conectado.</strong> Verifica disponibilidad de piezas antes de programar el servicio y genera la requisición si hay faltante.</div>
+        </div>
+        <div class="telem-item">
+          <div class="telem-num">04</div>
+          <div class="telem-text"><strong>Historial completo por unidad.</strong> Cada intervención queda documentada con costo, refacciones, proveedor y técnico. Ideal para auditorías y reventa.</div>
+        </div>
+      </div>
+
+      <div class="dash-mock" id="dash-mock">
+        <div class="dash-header">Estado de mantenimiento — flota activa</div>
+        <div class="vehicle-row" data-fill="85" data-color="#22c55e">
+          <div><div class="v-name">T-421 Kenworth T800</div><div class="v-detail">123,450 km · Servicio en 1,550 km</div></div>
+          <div><div class="v-status-ok">Al día</div><div class="progress-bar"><div class="progress-fill" style="background:#22c55e;"></div></div></div>
+        </div>
+        <div class="vehicle-row" data-fill="97" data-color="#6C8FFF">
+          <div><div class="v-name">T-309 Peterbilt 389</div><div class="v-detail">87,200 km · Servicio en 300 km</div></div>
+          <div><div class="v-status-warn">Próximo</div><div class="progress-bar"><div class="progress-fill" style="background:#6C8FFF;"></div></div></div>
+        </div>
+        <div class="vehicle-row" data-fill="100" data-color="#ef4444">
+          <div><div class="v-name">T-118 Freightliner C15</div><div class="v-detail">201,800 km · Temperatura alta</div></div>
+          <div><div class="v-status-alrt">Alerta</div><div class="progress-bar"><div class="progress-fill" style="background:#ef4444;"></div></div></div>
+        </div>
+        <div class="vehicle-row" data-fill="50" data-color="#22c55e">
+          <div><div class="v-name">T-205 International LT</div><div class="v-detail">45,600 km · Servicio en 4,400 km</div></div>
+          <div><div class="v-status-ok">Al día</div><div class="progress-bar"><div class="progress-fill" style="background:#22c55e;"></div></div></div>
+        </div>
+        <div class="dash-legend">
+          <span style="color:#22c55e;">● Al día: 2</span>
+          <span style="color:#6C8FFF;">● Próximo: 1</span>
+          <span style="color:#ef4444;">● Alerta: 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CARTA PORTE PASOS ═══ -->
+<section id="carta">
+  <div class="section">
+    <div class="section-eyebrow" data-reveal>Carta Porte SAT</div>
+    <div class="section-title" data-reveal>De la carga al timbre<br>en 3 pasos</div>
+    <div class="section-sub" data-reveal>Cumplir con la obligación fiscal del SAT no debería tomarte horas. Con Openmatic, el complemento se genera con los datos que ya capturaste en el despacho.</div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-n">01</div>
+        <div class="step-title">Crea la orden de viaje</div>
+        <div class="step-sub">Origen, destino, mercancías, operador y unidad. Un solo formulario integrado al despacho.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-n">02</div>
+        <div class="step-title">Genera el CFDI automáticamente</div>
+        <div class="step-sub">Openmatic completa los catálogos SAT, valida errores y envía al PAC certificado en segundos.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-n">03</div>
+        <div class="step-title">Sale el camión timbrado</div>
+        <div class="step-sub">El operador lleva el XML y PDF en su app. Sin papeles. Sin multas en carretera.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section id="cta">
+  <h2>¿Listo para salir del Excel<br>y <em>crecer en serio?</em></h2>
+  <p>Una demo de 30 minutos y ves Openmatic funcionando con datos de tu flota.</p>
+  <div class="cta-row">
+    <button onclick="window.open('https://calendar.app.google/AQz2pAq7ZeP5NnZB7')" class="btn-hero btn-hero-primary" style="font-size:16px;padding:14px 32px;">Agendar mi demo gratis</button>
+    <button class="btn-hero btn-hero-sec" style="font-size:16px;padding:14px 28px;" onclick="window.location.href='docs/tutorial/introduccion'">Ver documentación</button>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <img src="assets/logoopenmatic.png" alt="Openmatic" class="footer-logo">
+  <div class="footer-links">
+    <a href="#features">Producto</a>
+    <a href="#carta">Carta Porte</a>
+    <a href="docs/tutorial/introduccion">Documentación</a>
+    <a href="mailto:hola@openmatic.io">Contacto</a>
+  </div>
+  <div class="footer-note">© 2026 Openmatic · TMS para transportistas mexicanos</div>
+</footer>
+
+<script src="animation.js"></script>
+</body>
+</html>
