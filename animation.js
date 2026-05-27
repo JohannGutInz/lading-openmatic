@@ -12,24 +12,36 @@
   video.style.opacity  = '0';
   video.style.transition = 'opacity 0.5s ease';
 
-  let rafPending = false;
-  let lastTime   = -1;
+  let targetTime  = 0;
+  let currentTime = 0;
+  let rafId       = null;
+  const LERP      = 0.1; // 0 = sin movimiento, 1 = sin suavizado — 0.1 es fluido
 
-  function applyScroll() {
-    rafPending = false;
-    if (!videoReady || !isFinite(video.duration)) return;
-    const max     = container.offsetHeight - window.innerHeight;
-    const p       = Math.min(Math.max(window.scrollY / max, 0), 1);
-    const target  = p * video.duration * 0.98; // evita seek al frame final exacto
-    if (Math.abs(target - lastTime) < 0.01) return; // descarta seeks redundantes
-    lastTime = target;
-    video.currentTime = target;
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function tick() {
+    if (!videoReady || !isFinite(video.duration)) { rafId = null; return; }
+
+    currentTime = lerp(currentTime, targetTime, LERP);
+
+    if (Math.abs(currentTime - targetTime) < 0.001) {
+      currentTime = targetTime; // snap final para no quedar en bucle infinito
+      video.currentTime = currentTime;
+      rafId = null;
+      return;
+    }
+
+    video.currentTime = currentTime;
+    rafId = requestAnimationFrame(tick);
   }
 
   function onScroll() {
-    if (rafPending) return;
-    rafPending = true;
-    requestAnimationFrame(applyScroll);
+    if (!videoReady || !isFinite(video.duration)) return;
+    const max  = container.offsetHeight - window.innerHeight;
+    const p    = Math.min(Math.max(window.scrollY / max, 0), 1);
+    targetTime = p * video.duration * 0.98;
+
+    if (!rafId) rafId = requestAnimationFrame(tick);
   }
 
   video.addEventListener('loadedmetadata', () => {
@@ -47,7 +59,7 @@
   video.load();
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  applyScroll();
+  onScroll();
 })();
 
 /* ═══════════════════════════════════════════════
