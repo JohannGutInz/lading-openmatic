@@ -6,6 +6,10 @@
 <title>Openmatic — El TMS que cumple con el SAT por ti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="assets/favicon_io/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,7 +21,7 @@
     <a href="#features">Producto</a>
     <a href="#carta">Carta Porte</a>
     <a href="#telemetry">Mantenimiento</a>
-    <a href="docs/tutorial/introduccion">Documentación</a>
+    <a href="#" onclick="warnDocs(event)">Documentación</a>
   </div>
   <button onclick="window.open('https://app.openmatic.io/')" class="btn-nav">Iniciar sesión</button>
 </nav>
@@ -38,7 +42,7 @@
       <p>Genera tu Carta Porte timbrada, controla tu flota, programa mantenimientos con telemetría y factura sin errores — todo desde una sola plataforma diseñada para el transportista mexicano.</p>
       <div class="hero-ctas">
         <button class="btn-hero btn-hero-primary" onclick="window.location.href='#cta'">Solicitar demo gratis</button>
-        <button class="btn-hero btn-hero-sec" onclick="window.location.href='docs/tutorial/introduccion'">Ver documentación</button>
+        <button class="btn-hero btn-hero-sec" onclick="warnDocs(event)">Ver documentación</button>
       </div>
     </div>
 
@@ -244,7 +248,7 @@
   <p>Una demo de 30 minutos y ves Openmatic funcionando con datos de tu flota.</p>
   <div class="cta-row">
     <button onclick="window.open('https://calendar.app.google/AQz2pAq7ZeP5NnZB7')" class="btn-hero btn-hero-primary" style="font-size:16px;padding:14px 32px;">Agendar mi demo gratis</button>
-    <button class="btn-hero btn-hero-sec" style="font-size:16px;padding:14px 28px;" onclick="window.location.href='docs/tutorial/introduccion'">Ver documentación</button>
+    <button class="btn-hero btn-hero-sec" style="font-size:16px;padding:14px 28px;" onclick="warnDocs(event)">Ver documentación</button>
   </div>
 </section>
 
@@ -254,7 +258,7 @@
   <div class="footer-links">
     <a href="#features">Producto</a>
     <a href="#carta">Carta Porte</a>
-    <a href="docs/tutorial/introduccion">Documentación</a>
+    <a href="#" onclick="warnDocs(event)">Documentación</a>
     <a href="mailto:hola@openmatic.io">Contacto</a>
   </div>
   <div class="footer-note">© 2026 Openmatic · TMS para transportistas mexicanos</div>
