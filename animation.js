@@ -12,11 +12,24 @@
   video.style.opacity  = '0';
   video.style.transition = 'opacity 0.5s ease';
 
-  function onScroll() {
+  let rafPending = false;
+  let lastTime   = -1;
+
+  function applyScroll() {
+    rafPending = false;
     if (!videoReady || !isFinite(video.duration)) return;
-    const max = container.offsetHeight - window.innerHeight;
-    const p   = Math.min(Math.max(window.scrollY / max, 0), 1);
-    video.currentTime = p * video.duration;
+    const max     = container.offsetHeight - window.innerHeight;
+    const p       = Math.min(Math.max(window.scrollY / max, 0), 1);
+    const target  = p * video.duration * 0.98; // evita seek al frame final exacto
+    if (Math.abs(target - lastTime) < 0.01) return; // descarta seeks redundantes
+    lastTime = target;
+    video.currentTime = target;
+  }
+
+  function onScroll() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(applyScroll);
   }
 
   video.addEventListener('loadedmetadata', () => {
@@ -34,7 +47,7 @@
   video.load();
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  applyScroll();
 })();
 
 /* ═══════════════════════════════════════════════
@@ -61,7 +74,20 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.stat-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.1}s`; io.observe(el); });
+// Stats section fades in as a whole first, then cards stagger in
+const statsSection = document.getElementById('stats');
+new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    statsSection.classList.add('visible');
+    document.querySelectorAll('.stat-card').forEach((el, i) => {
+      el.style.transitionDelay = `${0.1 + i * 0.13}s`;
+      el.classList.add('visible');
+    });
+    document.querySelectorAll('[data-count]').forEach(el => animateCount(el));
+  });
+}, { threshold: 0.05 }).observe(statsSection);
+
 document.querySelectorAll('[data-count]').forEach(el => io.observe(el));
 document.querySelectorAll('.feature-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.11}s`; io.observe(el); });
 document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));

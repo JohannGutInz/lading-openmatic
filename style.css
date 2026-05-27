@@ -95,7 +95,7 @@ nav {
 /* ═══════════════════════════════════════════════
    HERO — Video Scroll (Apple style)
 ═══════════════════════════════════════════════ */
-#hero-scroll-container { position: relative; height: 500vh; }
+#hero-scroll-container { position: relative; height: 200vh; }
 
 #hero-sticky {
   position: sticky; top: 0; height: 100vh; overflow: hidden;
@@ -266,8 +266,12 @@ nav {
    STATS
 ═══════════════════════════════════════════════ */
 #stats {
-  padding: 0 40px 80px;
+  padding: 80px 40px 80px;
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
 }
+#stats.visible { opacity: 1; transform: translateY(0); }
+
 .stats-grid {
   max-width: 1240px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px;
@@ -276,8 +280,10 @@ nav {
   background: rgba(255,255,255,0.025);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm); padding: 28px 24px;
-  transition: var(--transition), opacity 0.6s, transform 0.6s;
-  opacity: 0; transform: translateY(22px);
+  transition: border-color 0.22s ease, background 0.22s ease,
+              opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  opacity: 0; transform: translateY(28px);
   position: relative; overflow: hidden;
 }
 .stat-card::before {
